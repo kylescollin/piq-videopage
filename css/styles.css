@@ -1,0 +1,58 @@
+body {
+	text-align: center;
+	background: #000000;
+	margin: 0px;
+	padding: 0px;
+}
+ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	height: 100%;
+}
+li {
+	float: left;
+	width: 72px;
+	height: 97%;
+	border-left: 1px solid #ececec;
+	border-right: 1px solid #dadada;
+}
+.content {
+	width: 320px;
+	height: 480px;
+	position: relative;
+	margin: 0 auto;
+	background-color: white;
+}
+.floater {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: table;
+}
+.main {
+	display: table-cell;
+	vertical-align: middle;
+}
+#video {
+	width: 298px;
+	height: 168px;
+	margin: 0 auto;
+}
+#controls{
+	width: 298px;
+	height: 50px;
+	margin: 0 auto;
+	background: red;
+	border:1px solid #c3c3c3;
+	-moz-box-sizing:    border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing:         border-box;
+	border-radius: 0px 0px 5px 5px;
+	background-color: #e4e4e4;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ececec), to(#dadada));
+	background: -webkit-linear-gradient(top, #ececec, #dadada);
+	background: -moz-linear-gradient(top, #ececec, #dadada);
+	background: -ms-linear-gradient(top, #ececec, #dadada);
+	background: -o-linear-gradient(top, #ececec, #dadada);
+}
