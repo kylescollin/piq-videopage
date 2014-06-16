@@ -1,4 +1,5 @@
 @mainBackground: url('../img/bg.png');
+@backgroundColor: #000000;
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -55,23 +56,23 @@ table {
 Basic Page Styles 
 ================================================================*/
 body{
-	background-color: #ffffff;
+	background-color: @backgroundColor;
 }
 #container {
-	width: 320px;
-	height: 480px;
+	width: 640px;
+	height: 960px;
 	background: @mainBackground;
 	margin: 0 auto;
 	text-align: center;
 }
 #video {
 	position: relative;
-	top: 150px;
+	top: 300px;
 	margin: 0 auto;
 }
 .button {
 	position: relative;
-	top: 200px;
+	top: 400px;
 	-webkit-filter: drop-shadow(3px 3px 8px rgba(0,0,0,0.3));
 }
 #pxs {
