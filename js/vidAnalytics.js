@@ -27,27 +27,27 @@ function assignEvents() {
 function showEvent(e) {
     switch (e.type) {
         case 'loadstart' :
-            _gaq.push(['_trackEvent','Video Event','Loading','Load Start']);
+            ga('send', 'event', 'video event', 'loading', 'load start');
             console.log("loadstart - begin loading media data");
             break;
         case 'progress':
-            _gaq.push(['_trackEvent','Video Event','Loading','Progress']);
+            ga('send', 'event', 'video event', 'loading', 'progress');
             console.log("progress - fetching media...");
             break;
         case 'canplay':
-            _gaq.push(['_trackEvent','Video Event','Loading','Can Play']);
+            ga('send', 'event', 'video event', 'loading', 'can play');
             console.log("canplay - can play, but will eventually have to buffer");
             break;
         case 'canplaythrough':
-            _gaq.push(['_trackEvent','Video Event','Loading','Can Play Through']);
+            ga('send', 'event', 'video event', 'loading', 'can play through');
             console.log("canplaythrough - can play, won't have to buffer anymore");
             break;
         case 'loadeddata':
-            _gaq.push(['_trackEvent','Video Event','Loading','Loaded Data']);
+            ga('send', 'event', 'video event', 'loading', 'loaded data');
             console.log("loadeddata - can render media data at current playback position");
             break;
         case 'loadedmetadata':
-            _gaq.push(['_trackEvent','Video Event','Loading','Load Meta Data']);
+            ga('send', 'event', 'video event', 'loading', 'load meta data');
             console.log("loadedmetadata - now we know duration, height, width, and more");
             break;
         case 'timeupdate':
@@ -57,96 +57,96 @@ function showEvent(e) {
             console.log("timeupdate - [" + currentTime + " / " + totalTime + "] ( " + percent + "% ) - current time of the video");
             if(percent >= 25 && percent < 50 && firstQuart === false){
                 firstQuart = true;
-                _gaq.push(['_trackEvent','Video Event','Watching','First Quartile']);
+                ga('send', 'event', 'video event', 'watching', 'FIRST QUARTILE');
                 console.log("FIRST QUARTILE");
             }
             if(percent >= 50 && percent < 75 && secondQuart === false){
                 secondQuart = true;
-                _gaq.push(['_trackEvent','Video Event','Watching','Second Quartile']);
+                ga('send', 'event', 'video event', 'watching', 'SECOND QUARTILE');
                 console.log("SECOND QUARTILE");
             }
             if(percent >= 75 && percent < 99 && thirdQuart === false){
                 thirdQuart = true;
-                _gaq.push(['_trackEvent','Video Event','Watching','Third Quartile']);
+                ga('send', 'event', 'video event', 'watching', 'THIRD QUARTILE');
                 console.log("THIRD QUARTILE");
             }
             if(percent >= 99 && fourthQuart === false){
                 fourthQuart = true;
-                _gaq.push(['_trackEvent','Video Event','Watching','Completed']);
-                console.log("FOURTH QUARTILE");
+                ga('send', 'event', 'video event', 'watching', 'COMPLETED');
+                console.log("COMPLETED");
             }
             break;
         case 'durationchange':
-            _gaq.push(['_trackEvent','Video Event','Adjusting','Duration Change']);
+            ga('send', 'event', 'video event', 'adjusting', 'duration change');
             console.log("durationchange - new info about the duration");
             break;
         case 'volumechange':
-            _gaq.push(['_trackEvent','Video Event','Adjusting','Volume Change']);
+            ga('send', 'event', 'video event', 'adjusting', 'volumbe change');
             console.log("volumechange - volume or muted property has changed");
             break;
         case 'play':
-            _gaq.push(['_trackEvent','Video Event','Adjusting','Play']);
+            ga('send', 'event', 'video event', 'adjusting', 'play');
             console.log("play - just returned from the play function");
             if(play === false){
                 play = true;
-                _gaq.push(['_trackEvent','Video Event','Adjusting','First Play']);
+                ga('send', 'event', 'video event', 'adjusting', 'FIRST PLAY');
                 console.log("FIRST PLAY");
             }
             break;
         case 'playing':
-            _gaq.push(['_trackEvent','Video Event','Adjusting','Playing']);
+            ga('send', 'event', 'video event', 'adjusting', 'playing');
             console.log("playing - playback has started");
             break;
         case 'pause':
-            _gaq.push(['_trackEvent','Video Event','Adjusting','Pause']);
+            ga('send', 'event', 'video event', 'adjusting', 'pause');
             console.log("pause - just returned from the pause function");
             if(pause === false){
                 pause = true;
-                _gaq.push(['_trackEvent','Video Event','Adjusting','First Pause']);
+                ga('send', 'event', 'video event', 'adjusting', 'first pause');
                 console.log("FIRST PAUSE");
             }
             break;
         case 'suspend':
-            _gaq.push(['_trackEvent','Video Event','Adjusting','Suspend']);
+            ga('send', 'event', 'video event', 'adjusting', 'suspend');
             console.log("suspend - loading has stopped, but not all of the media has downloaded");
             break;
         case 'waiting':
-            _gaq.push(['_trackEvent','Video Event','Adjusting','Waiting']);
+            ga('send', 'event', 'video event', 'adjusting', 'waiting');
             console.log("waiting - stopped playback because we're waiting for the next frame");
             break;
         case 'stalled':
-            _gaq.push(['_trackEvent','Video Event','Adjusting','Stalled']);
+            ga('send', 'event', 'video event', 'adjusting', 'stalled');
             console.log("stalled - fetching media data, but none is arriving");
             break;
         case 'webkitbeginfullscreen':
-            _gaq.push(['_trackEvent','Video Event','Adjusting','Fullscreen']);
+            ga('send', 'event', 'video event', 'adjusting', 'fullscreen');
             console.log("webkitbeginfullscreen - entering fullscreen mode");
             break;
         case 'webkitendfullscreen':
-            _gaq.push(['_trackEvent','Video Event','Adjusting','Close Fullscreen']);
+            ga('send', 'event', 'video event', 'adjusting', 'close fullscreen');
             console.log("webkitendfullscreen - exiting fullscreen mode");
             break;
         case 'error':  
             var error = document.querySelector('video').error;
             switch (error.code) {
               case error.MEDIA_ERR_ABORTED:
-                _gaq.push(['_trackEvent','Video Event','Errors','Fetching Aborted']);
+                ga('send', 'event', 'video event', 'errors', 'fetching aborted');
                 console.log("ERROR - fetching aborted at the user's request"); 
                 break;
               case error.MEDIA_ERR_NETWORK:
-                _gaq.push(['_trackEvent','Video Event','Errors','Network Error']);
+                ga('send', 'event', 'video event', 'errors', 'network error');
                 console.log("ERROR - a network error caused the browser to stop fetching the media"); 
                 break;
               case error.MEDIA_ERR_DECODE:
-                _gaq.push(['_trackEvent','Video Event','Errors','Decoding Error']);
+                ga('send', 'event', 'video event', 'errors', 'decoding error');
                 console.log("ERROR - an error occurred while decoding the media"); 
                 break;
               case error.MEDIA_ERR_SRC_NOT_SUPPORTED:
-                _gaq.push(['_trackEvent','Video Event','Errors','Source Error']);
+                ga('send', 'event', 'video event', 'errors', 'source error');
                 console.log("ERROR - the media indicated by the src attribute was not suitable"); 
                 break;
               default:
-                _gaq.push(['_trackEvent','Video Event','Errors','Generic Error']);
+                ga('send', 'event', 'video event', 'errors', 'generic error');
                 console.log("ERROR - an error occurred"); 
                 break;
             }
